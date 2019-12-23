@@ -1,15 +1,14 @@
-# Docker help for {{bot}}
+# Docker help for Minibot
 
-You have multiple options to run an instance of {{bot}} using docker.
+You have multiple options to run an instance of Minibot using docker.
 
-- [Docker help for {{bot}}](#docker-help-for-bot)
+- [Docker help for Minibot](#docker-help-for-minibot)
+  - [Using docker-compose and the prebuilt-image (recommended)](#using-docker-compose-and-the-prebuilt-image-recommended)
   - [Using docker-compose and building the image](#using-docker-compose-and-building-the-image)
   - [Using pure docker](#using-pure-docker)
     - [[Optional] Building the image](#optional-building-the-image)
     - [Creating the container](#creating-the-container)
 
-
-<!-- !! ONLY include this part if you provide a prebuilt image !!
 
 ## Using docker-compose and the prebuilt-image (recommended)
 
@@ -23,8 +22,8 @@ This is the easiest method for running the bot without any modifications.
     ```yaml
     version: '3'
     services:
-      {{bot}}:
-        image: "{{user}}/{{image}}:latest"
+      minibot:
+        image: "0x5c/minibot:latest"
         restart: on-failure
         volumes:
           - "./data:/app/data:rw"
@@ -44,7 +43,6 @@ This is the easiest method for running the bot without any modifications.
     ```
 
     > Run without "-d" to test the bot. (run in foreground)
--->
 
 
 ## Using docker-compose and building the image
@@ -58,9 +56,9 @@ This is the easiest method to run the bot with modifications.
     ```yaml
     version: '3'
     services:
-      {{bot}}:
+      minibot:
         build: .
-        image: "{{image}}:local-latest"
+        image: "minibot:local-latest"
         restart: on-failure
         volumes:
           - "./data:/app/data:rw"
@@ -96,7 +94,7 @@ This methods is not very nice to use.
 2. Run docker build:
 
     ```none
-    $ docker build -t {{image}}:local-latest .
+    $ docker build -t minibot:local-latest .
     ```
 
 
@@ -107,11 +105,9 @@ This methods is not very nice to use.
 2. Run the container:
 
     ```none
-    $ docker run -d --rm --mount type=bind,src=$(pwd)/data,dst=/app/data --name {{bot}} [image]
+    $ docker run -d --rm --mount type=bind,src=$(pwd)/data,dst=/app/data --name minibot [image]
     ```
 
     Where `[image]` is either of:
-    - `{{image}}:local-latest` if you are building your own.
-<!-- !! ONLY include this part if you provide a prebuilt image !!
-    - `{{user}}/{{image}}:latest` if you want to use the prebuilt image.
--->
+    - `minibot:local-latest` if you are building your own.
+    - `0x5c/minibot:latest` if you want to use the prebuilt image.
