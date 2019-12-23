@@ -95,9 +95,9 @@ async def on_member_join(member: discord.Member):
         roles = opt.autoroles[guild.id]
         existing_roles = member.roles.copy()
         for role_id in roles:
-            print(f"[II] Applying autoroles to {member}.")
             existing_roles.append(guild.get_role(role_id))
         try:
+            print(f"[II] Applying autoroles to {member}.")
             await member.edit(roles=existing_roles, reason="minibot-autorole")
         except discord.Forbidden as ex:
             print(f"[EE] discord.Forbidden in {guild.id}: {ex}")
