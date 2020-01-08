@@ -1,6 +1,6 @@
 # Minibot, a bot for basic server stuff
 
-[![Discord](https://discordapp.com/api/guilds/591099017492955166/widget.png?style=shield)](https://discordapp.com/invite/6reX7e)
+[![Discord](https://discordapp.com/api/guilds/591099017492955166/widget.png?style=shield)](https://discord.gg/Wq8vpm3)
 
 A small bot for basic guild stuff.
 

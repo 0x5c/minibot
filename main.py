@@ -40,6 +40,7 @@ async def _info(ctx: commands.Context):
         embed.add_field(name="Author", value=info.author)
         embed.add_field(name="Contributing", value=info.contributing)
         embed.add_field(name="License", value=info.license)
+        embed.add_field(name="Official Guild", value=info.guild_invite)
         embed.title = "About Minibot\n"
         embed.description = info.description
     botinfo = ("```\n"
@@ -55,7 +56,7 @@ async def _info(ctx: commands.Context):
                "Bot permissions in this channel:\n"
                f"- manage_messages: {channel_perms.manage_messages}"
                "```")
-    embed.add_field(name="Bot Status", value=botinfo)
+    embed.add_field(name="Bot Status", value=botinfo, inline=False)
     await ctx.send(embed=embed)
 
 

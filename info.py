@@ -8,3 +8,4 @@ description = """A bot for basic guild stuff."""
 license = "MIT"
 contributing = "https://github.com/0x5c/minibot"
 release = '1.0.1'
+guild_invite = "https://discord.gg/Wq8vpm3"

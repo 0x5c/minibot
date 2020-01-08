@@ -7,12 +7,15 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+### Added
+- Official guild invite in 'info'.
 
 
 ## [1.0.1] - 2019-12-23
-## Changed
+### Changed
 - Fix autorole msg being printed for each role.
-- Fix default prefix being too generic
+- Fix default prefix being too generic.
+
 
 ## [1.0.0] - 2019-12-23
 ### Added
