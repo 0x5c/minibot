@@ -32,7 +32,7 @@ Includes:
 
 ## Built using 0x5c/quick-bot-no-pain
 
-Get straight to coding, as-soon as the idea strikes: [try it for yourself!](https://github.com/0x5c/quick-bot-no-pain)
+Skip the boilerplate, Get straight to coding: [try it for yourself!](https://github.com/0x5c/quick-bot-no-pain)
 
 
 ## License
