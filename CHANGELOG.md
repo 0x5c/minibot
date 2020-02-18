@@ -7,9 +7,13 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+
+
+## [1.2.0] - 2020-02-17
 ### Added
 - Selfrole system. Includes new elements in `options.py`.
 - Official guild invite in 'info'.
+- Activity message.
 
 
 ## [1.0.1] - 2019-12-23
@@ -23,6 +27,7 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Autorole system
 
 
-[Unreleased]: https://github.com/0x5c/minibot/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/0x5c/minibot/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/0x5c/minibot/releases/tag/v1.2.0
 [1.0.1]: https://github.com/0x5c/minibot/releases/tag/v1.0.1
 [1.0.0]: https://github.com/0x5c/minibot/releases/tag/v1.0.0
