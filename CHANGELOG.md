@@ -8,6 +8,7 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 ## [Unreleased]
 ### Added
+- Selfrole system. Includes new elements in `options.py`.
 - Official guild invite in 'info'.
 
 

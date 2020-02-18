@@ -28,3 +28,15 @@ command_prefix = "mb?"
 #     ...
 # }
 autoroles = {}
+
+
+# The self-assingnable roles, per guild.
+# {
+#     guild_id: [
+#         role_id,
+#         role_id,
+#         ...
+#     ],
+#     ...
+# }
+selfroles = {}

@@ -12,6 +12,8 @@ See LICENSE for the full text of the license.
 import discord
 import discord.ext.commands as commands
 
+import selfrole
+
 import info
 
 import data.keys as keys
@@ -84,9 +86,9 @@ async def on_ready():
                 if role is None:
                     invalid_roles = True
     if invalid_guilds:
-        print("[WW] Invalid/unknown guild IDs found in the config!")
+        print("[WW] Invalid/unknown guild IDs found in the autorole config!")
     if invalid_roles:
-        print("[WW] Invalid/unknown role IDs found in the config!")
+        print("[WW] Invalid/unknown role IDs found in the autorole config!")
 
 
 @bot.event
@@ -105,6 +107,8 @@ async def on_member_join(member: discord.Member):
 
 
 # --- Init ---
+
+bot.add_cog(selfrole.SelfRole(bot))
 
 try:
     bot.run(keys.discord_token)
