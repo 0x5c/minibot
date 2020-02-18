@@ -10,7 +10,7 @@ See LICENSE for the full text of the license.
 
 
 import discord
-import discord.ext.commands as commands
+from discord.ext import commands, tasks
 
 import selfrole
 
@@ -27,6 +27,11 @@ embed_colour = 0x005682
 nobranding = False
 
 bot = commands.Bot(command_prefix=opt.command_prefix)
+
+if isinstance(opt.command_prefix, list):
+    prefix = opt.command_prefix[0]
+else:
+    prefix = opt.command_prefix
 
 
 # --- Commands ---
@@ -90,6 +95,8 @@ async def on_ready():
     if invalid_roles:
         print("[WW] Invalid/unknown role IDs found in the autorole config!")
 
+    refresh_status.start()
+
 
 @bot.event
 async def on_member_join(member: discord.Member):
@@ -104,6 +111,11 @@ async def on_member_join(member: discord.Member):
             await member.edit(roles=existing_roles, reason="minibot-autorole")
         except discord.Forbidden as ex:
             print(f"[EE] discord.Forbidden in {guild.id}: {ex}")
+
+
+@tasks.loop(minutes=10)
+async def refresh_status():
+    await bot.change_presence(activity=discord.Game(name=f"{prefix}help"))
 
 
 # --- Init ---
