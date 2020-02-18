@@ -38,7 +38,7 @@ Skip the boilerplate, Get straight to coding: [try it for yourself!](https://git
 
 ## License
 
-Copyright (c) 2020 0x5c
+Copyright (c) 2019-2020 0x5c
 
 This project is released under the terms of the MIT license.  
 See `LICENSE` for the full license text.
