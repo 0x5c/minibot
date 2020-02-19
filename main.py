@@ -39,8 +39,6 @@ else:
 @bot.command(name="info", aliases=["about"])
 async def _info(ctx: commands.Context):
     """Bot information."""
-    guild_perms = ctx.guild.me.guild_permissions
-    channel_perms = ctx.channel.permissions_for(ctx.guild.me)
     embed = discord.Embed()
     embed.colour = embed_colour
     if not nobranding:
@@ -50,20 +48,25 @@ async def _info(ctx: commands.Context):
         embed.add_field(name="Official Guild", value=info.guild_invite)
         embed.title = "About Minibot\n"
         embed.description = info.description
-    botinfo = ("```\n"
-               f"Version: {info.release}\n"
-               f"discord.py version: {discord.__version__}\n"
-               f"Instance ID: {bot.user.id}\n"
-               "---\n"
-               f"Server ID: {ctx.guild.id}\n"
-               "\n"
-               "Bot permissions:\n"
-               f"- manage_roles: {guild_perms.manage_roles}\n"
-               "\n"
-               "Bot permissions in this channel:\n"
-               f"- manage_messages: {channel_perms.manage_messages}"
-               "```")
-    embed.add_field(name="Bot Status", value=botinfo, inline=False)
+    if ctx.guild is not None:
+        guild_perms = ctx.guild.me.guild_permissions
+        channel_perms = ctx.channel.permissions_for(ctx.guild.me)
+        botinfo = ("```\n"
+                   f"Version: {info.release}\n"
+                   f"discord.py version: {discord.__version__}\n"
+                   f"Instance ID: {bot.user.id}\n"
+                   "---\n"
+                   f"Server ID: {ctx.guild.id}\n"
+                   "\n"
+                   "Bot permissions:\n"
+                   f"- manage_roles: {guild_perms.manage_roles}\n"
+                   "\n"
+                   "Bot permissions in this channel:\n"
+                   f"- manage_messages: {channel_perms.manage_messages}"
+                   "```")
+        embed.add_field(name="Bot Status", value=botinfo, inline=False)
+    else:
+        embed.add_field(name="Bot Status", value="```\nStatus unavailable in DMs.\n```", inline=False)
     await ctx.send(embed=embed)
 
 

@@ -7,6 +7,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+### Fixed
+- Fixed bug where `mb?info` would not work in DMs.
 
 
 ## [1.2.0] - 2020-02-17
