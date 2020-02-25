@@ -7,6 +7,9 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+
+
+## [1.3.0] - 2020-02-25
 ### Added
 - (selfroles) Ability to get/remove more than one role at a time.
 - New `display_prefix` key to the config.
@@ -38,7 +41,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Autorole system
 
 
-[Unreleased]: https://github.com/0x5c/minibot/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/0x5c/minibot/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/0x5c/minibot/releases/tag/v1.3.0
 [1.2.1]: https://github.com/0x5c/minibot/releases/tag/v1.2.1
 [1.2.0]: https://github.com/0x5c/minibot/releases/tag/v1.2.0
 [1.0.1]: https://github.com/0x5c/minibot/releases/tag/v1.0.1
