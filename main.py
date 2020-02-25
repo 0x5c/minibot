@@ -28,11 +28,6 @@ nobranding = False
 
 bot = commands.Bot(command_prefix=opt.command_prefix)
 
-if isinstance(opt.command_prefix, list):
-    prefix = opt.command_prefix[0]
-else:
-    prefix = opt.command_prefix
-
 
 # --- Commands ---
 
@@ -118,7 +113,7 @@ async def on_member_join(member: discord.Member):
 
 @tasks.loop(minutes=10)
 async def refresh_status():
-    await bot.change_presence(activity=discord.Game(name=f"{prefix}help"))
+    await bot.change_presence(activity=discord.Game(name=f"{opt.display_prefix}help"))
 
 
 # --- Init ---

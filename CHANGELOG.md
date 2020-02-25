@@ -9,6 +9,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 ## [Unreleased]
 ### Added
 - (selfroles) Ability to get/remove more than one role at a time.
+- New `display_prefix` key to the config.
+- More prefixes to the config template.
 
 
 ## [1.2.1] - 2020-02-19
