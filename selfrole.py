@@ -9,8 +9,6 @@ See LICENSE for the full text of the license.
 """
 
 
-from typing import Optional
-
 import discord
 import discord.ext.commands as commands
 
@@ -44,10 +42,11 @@ class SelfRole(commands.Cog):
 
     @commands.command()
     @commands.guild_only()
-    async def roleme(self, ctx: commands.Context, number: Optional[int] = None):
+    async def roleme(self, ctx: commands.Context, *numbers: int):
         guild_id = ctx.guild.id
         guild = self.bot.get_guild(guild_id)
         member: discord.Member = ctx.author
+        numbers = set(sorted(numbers))
 
         if guild_id not in opt.selfroles:
             # There is no selfrole configured for this guild.
@@ -56,32 +55,43 @@ class SelfRole(commands.Cog):
             await ctx.send(embed=embed)
             return
 
-        if number is not None:
-            # We've got a role selection.
-            embed = discord.Embed(title="Error!", colour=0xF04747)
-            embed.description = f"Invalid role number: `{number}`"
-            try:
-                role_id = opt.selfroles[guild_id][number]
-            except IndexError:
-                # Selection is out of range.
-                embed.description += "\n\n`NOT_A_ROLE`"
-                await ctx.send(embed=embed)
-                return
-            role = guild.get_role(role_id)
-            if role is None:
-                # Selection
-                embed.description += "\n\n`BONK_ROLE`"
-                await ctx.send(embed=embed)
-                return
-            if role in member.roles:
-                await member.remove_roles(role, reason="Self-assignable role")
-                status = "Removed"
-            else:
-                await member.add_roles(role, reason="Self-assignable role")
-                status = "Added"
-            print(f"[II] {status} role '{role.name}' to {member} in {guild.id}")
+        if numbers:
+            # We've got a(many) role selection(s).
+            assigned_roles = []
+            removed_roles = []
+            errors = []
+            for role_num in numbers:
+                try:
+                    role_id = opt.selfroles[guild_id][role_num]
+                except IndexError:
+                    # Selection is out of range.
+                    errors.append(f"`{role_num}`: `NOT_A_ROLE`")
+                    continue
+                role = guild.get_role(role_id)
+                if role is None:
+                    # Selection is a in invalid role present in the config.
+                    errors.append(f"`{role_num}`: `BONK_ROLE`")
+                    continue
+                if role in member.roles:
+                    # Selection is a valid role and user has it.
+                    print(f"[II] Removing role '{role.name}' from {member} in {guild.id}")
+                    await member.remove_roles(role, reason="Self-assignable role")
+                    removed_roles.append(f"`{role_num}`: {role.mention}")
+                else:
+                    # Selection is a valid role and user does not have it.
+                    print(f"[II] Assigning role '{role.name}' to {member} in {guild.id}")
+                    await member.add_roles(role, reason="Self-assignable role")
+                    assigned_roles.append(f"`{role_num}`: {role.mention}")
             embed = discord.Embed(title="Roleme", colour=0x43B581)
-            embed.description = f"**{status} {role.mention}**"
+            if assigned_roles:
+                embed.add_field(name="Assigned roles", value="\n".join(assigned_roles), inline=False)
+            if removed_roles:
+                embed.add_field(name="Removed roles", value="\n".join(removed_roles), inline=False)
+            if errors:
+                if not (assigned_roles or removed_roles):
+                    embed.title = "Error!"
+                    embed.colour = 0xF04747
+                embed.add_field(name="Invalid roles", value="\n".join(errors), inline=False)
             await ctx.send(embed=embed)
             return
         else:
@@ -108,7 +118,8 @@ class SelfRole(commands.Cog):
 
             # Presenting the list of roles.
             embed = discord.Embed(title="Assignable roles list", colour=0x005682)
-            embed.description = f"Use `{ctx.prefix}roleme <number>` to select a role."
+            embed.description = f"""Use `{ctx.prefix}roleme <number>` to select a role.
+                                You can select multiple roles by separating them with a space: `0 1 2 3`."""
             if available_roles:
                 available_list = str("\n".join([f"`{idx}`: {role.mention}" for idx, role in available_roles]))
                 embed.add_field(name="Available roles", value=available_list, inline=False)

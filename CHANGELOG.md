@@ -7,6 +7,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+### Added
+- (selfroles) Ability to get/remove more than one role at a time.
 
 
 ## [1.2.1] - 2020-02-19
