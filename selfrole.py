@@ -43,6 +43,7 @@ class SelfRole(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def roleme(self, ctx: commands.Context, *numbers: int):
+        """Lists or self-assignable roles."""
         numbers = set(sorted(numbers))
 
         if ctx.guild.id not in opt.selfroles:
@@ -61,6 +62,7 @@ class SelfRole(commands.Cog):
             await self.send_roles(ctx)
 
     async def send_roles(self, ctx: commands.Context):
+        """Lists the availlable roles for the message author."""
         member: discord.Member = ctx.author
 
         available_roles = []
@@ -96,6 +98,7 @@ class SelfRole(commands.Cog):
         await ctx.send(embed=embed)
 
     async def apply_roles(self, ctx: commands.Context, roles: set):
+        """Adds/removes the selected roles from the message author."""
         member: discord.Member = ctx.author
 
         assigned_roles = []
