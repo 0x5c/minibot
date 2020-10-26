@@ -18,7 +18,7 @@ meowJapanese = ""ミュ", "マオ""
 
 #functional
 
-fileLocation = "das_katzchen.png"
+fileLocation = "das-katzchen.png"
 # Might need dynamic changes if we move this file to a resources folder; such cases are better handled/changed from a helper file than in the main.py
 fileDiscordName = image.png
 fileDiscordNameQuotes = """ + image.png + """
