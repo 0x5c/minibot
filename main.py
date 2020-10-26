@@ -16,6 +16,8 @@ import selfrole
 
 import info
 
+import meow
+
 import data.keys as keys
 import data.options as opt
 
@@ -70,7 +72,20 @@ async def _info(ctx: commands.Context):
         embed.add_field(name="Bot Status", value="```\nStatus unavailable in DMs.\n```", inline=False)
     await ctx.send(embed=embed)
 
+@bot.command(name="meow", aliases=[meow.meowEnglish + " , " + meow.meowSpanish + " , " + meow.meowJapanese])
+# Cats sure make a lot of noise. :) All good things. --The above translations can be added to easily this way.
 
+#Ah, now the good stuff
+async def _info(ctx: commands.Context):
+    """Displays a kitten."""
+    embed = discord.Embed()
+    embed.colour = embed_colour
+    if not nobranding:
+        embed.title = "Meow!\n"
+        file = discord.File(meow.fileLocation, filename=meow.fileDiscordNameQuotes)
+        embed.set_image(url=meow.fileEmbedName)
+        await ctx.send(file=file, embed=embed)    
+    
 # @bot.command(name="purge", aliases=["prune", "nuke"])
 # async def _purge(ctx: commands.Context, limit: int):
 #     ...
