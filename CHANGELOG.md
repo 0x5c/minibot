@@ -8,6 +8,9 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 ## [Unreleased]
 
+### [1.4.0] - 2020-10-26
+#### Added
+- A kitten who meows at you to display with the `mb?meow` command
 
 ## [1.3.2] - 2020-10-06
 ### Changed
