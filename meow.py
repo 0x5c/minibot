@@ -14,7 +14,7 @@ license = "MIT"
 
 meowEnglish = ""mew", "miao", "mao""
 meowSpanish = ""miau""
-meowJapanese = ""ミュ", "マオ""
+meowJapanese = ""ニャ", "ニャン", "ミュ", "マオ""
 
 #functional
 
