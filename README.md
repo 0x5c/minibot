@@ -7,6 +7,7 @@ A small bot for basic guild stuff.
 Includes:
 - Autorole
 - Selfrole
+- Meow
 - ~~Purge command~~ *Soon™*
 
 
@@ -39,6 +40,7 @@ Skip the boilerplate, Get straight to coding: [try it for yourself!](https://git
 ## License
 
 Copyright (c) 2019-2020 0x5c
+with contributions from [madicetea](https://madicetea.me)
 
 This project is released under the terms of the MIT license.  
 See `LICENSE` for the full license text.
