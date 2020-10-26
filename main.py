@@ -140,6 +140,7 @@ async def refresh_status():
 # --- Init ---
 
 bot.add_cog(selfrole.SelfRole(bot))
+bot.add_cog(meow.Meow(bot))
 
 try:
     bot.run(keys.discord_token)
