@@ -9,6 +9,16 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 ## [Unreleased]
 
 
+## [1.3.2] - 2020-10-06
+### Changed
+- Bumped version of discord.py to 1.5.0
+
+
+## [1.3.1] - 2020-07-30
+### Fixed
+- Version pinning of `discord.py`.
+
+
 ## [1.3.0] - 2020-02-25
 ### Added
 - (selfroles) Ability to get/remove more than one role at a time.
@@ -41,7 +51,9 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Autorole system
 
 
-[Unreleased]: https://github.com/0x5c/minibot/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/0x5c/minibot/compare/v1.3.2...HEAD
+[1.3.2]: https://github.com/0x5c/minibot/releases/tag/v1.3.2
+[1.3.1]: https://github.com/0x5c/minibot/releases/tag/v1.3.1
 [1.3.0]: https://github.com/0x5c/minibot/releases/tag/v1.3.0
 [1.2.1]: https://github.com/0x5c/minibot/releases/tag/v1.2.1
 [1.2.0]: https://github.com/0x5c/minibot/releases/tag/v1.2.0

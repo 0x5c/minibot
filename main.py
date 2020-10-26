@@ -26,7 +26,13 @@ embed_colour = 0x005682
 
 nobranding = False
 
-bot = commands.Bot(command_prefix=opt.command_prefix)
+# Defining the intents to use
+intents = discord.Intents.none()
+intents.guilds = True
+intents.members = True
+intents.messages = True
+
+bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=discord.MemberCacheFlags.none(), chunk_guilds_at_startup=False)
 
 
 # --- Commands ---
