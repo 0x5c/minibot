@@ -104,6 +104,9 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member: discord.Member):
+    if opt.no_autorole_bots and member.bot:
+        print(f"[II] Not applying autoroles to bot {member}.")
+        return
     guild = member.guild
     if guild.id in opt.autoroles:
         roles = opt.autoroles[guild.id]

@@ -33,6 +33,8 @@ display_prefix = "mb?"
 # }
 autoroles = {}
 
+# If true, autorole will not give roles to bots automatically
+no_autorole_bots = True
 
 # The self-assingnable roles, per guild.
 # {

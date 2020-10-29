@@ -7,6 +7,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+### Added
+- Ability to exclude bots from autorole (on by default).
 
 
 ## [1.3.2] - 2020-10-06
