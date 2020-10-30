@@ -32,7 +32,12 @@ intents.guilds = True
 intents.members = True
 intents.messages = True
 
-bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=discord.MemberCacheFlags.none(), chunk_guilds_at_startup=False)
+# Only cache members if needed by a bot feature
+member_cache_flags = discord.MemberCacheFlags.from_intents(intents) if opt.enable_role_stats \
+    else discord.MemberCacheFlags.none()
+
+bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=member_cache_flags,
+                   chunk_guilds_at_startup=opt.enable_role_stats)
 
 
 # --- Commands ---
