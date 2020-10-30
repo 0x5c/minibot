@@ -11,6 +11,9 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Ability to exclude bots from autorole (on by default).
 
 
+### Added
+- A kitten who meows at you to display with the `mb?meow` command
+
 ## [1.3.2] - 2020-10-06
 ### Changed
 - Bumped version of discord.py to 1.5.0
@@ -53,7 +56,7 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Autorole system
 
 
-[Unreleased]: https://github.com/0x5c/minibot/compare/v1.3.2...HEAD
+[Unreleased]: https://github.com/0x5c/minibot/compare/v1.4.0...HEAD
 [1.3.2]: https://github.com/0x5c/minibot/releases/tag/v1.3.2
 [1.3.1]: https://github.com/0x5c/minibot/releases/tag/v1.3.1
 [1.3.0]: https://github.com/0x5c/minibot/releases/tag/v1.3.0
