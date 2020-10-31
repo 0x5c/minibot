@@ -31,6 +31,7 @@ intents = discord.Intents.none()
 intents.guilds = True
 intents.members = True
 intents.messages = True
+intents.dm_messages = True
 
 bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=discord.MemberCacheFlags.none(), chunk_guilds_at_startup=False)
 
