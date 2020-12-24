@@ -32,8 +32,15 @@ intents.guilds = True
 intents.members = True
 intents.messages = True
 intents.dm_messages = True
+intents.presences = True
 
-bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=discord.MemberCacheFlags.none(), chunk_guilds_at_startup=False)
+# Setting up the member cache
+member_cache_flags = discord.MemberCacheFlags.none()
+member_cache_flags.joined = True
+member_cache_flags.online = True
+
+bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=member_cache_flags,
+                   chunk_guilds_at_startup=True)
 
 
 # --- Commands ---
@@ -105,6 +112,17 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member: discord.Member):
+    if not member.pending:
+        await do_autoroles(member)
+
+
+@bot.event
+async def on_member_update(before: discord.Member, after: discord.Member):
+    if before.pending and not after.pending:
+        await do_autoroles(after)
+
+
+async def do_autoroles(member: discord.Member):
     if opt.no_autorole_bots and member.bot:
         print(f"[II] Not applying autoroles to bot {member}.")
         return

@@ -6,6 +6,7 @@ A small bot for basic guild stuff.
 
 Includes:
 - Autorole
+    - Supports [Membership Screening](https://support.discord.com/hc/en-us/articles/1500000466882-Rules-Screening-FAQ)
 - Selfrole
 - ~~Purge command~~ *Soon™*
 
