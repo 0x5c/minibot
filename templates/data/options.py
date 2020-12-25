@@ -21,6 +21,8 @@ command_prefix = ["mb? ", "mb?", "Mb? ", "Mb?"]
 # The prefix to use for display purposes (ex: status message).
 display_prefix = "mb?"
 
+# enable the mb?rolestats command
+enable_role_stats = True
 
 # The roles to give to new members, per guild.
 # {
