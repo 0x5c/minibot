@@ -9,6 +9,8 @@ See LICENSE for the full text of the license.
 """
 
 
+from typing import Dict
+
 import discord
 import discord.ext.commands as commands
 
@@ -136,4 +138,81 @@ class SelfRole(commands.Cog):
                 embed.title = "Error!"
                 embed.colour = 0xF04747
             embed.add_field(name="Invalid roles", value="\n".join(errors), inline=False)
+        await ctx.send(embed=embed)
+
+    @commands.group(name="rolestats", enabled=opt.enable_role_stats)
+    @commands.guild_only()
+    async def _role_stats(self, ctx: commands.Context):
+        """Show statistics for roleme-managed roles."""
+        if ctx.invoked_subcommand is None:
+            role_stats: Dict[discord.Role, int] = {}
+
+            if ctx.guild.id not in opt.selfroles:
+                # There is no selfrole configured for this guild.
+                embed = discord.Embed(title="Error!", colour=0xF04747)
+                embed.description = ("This guild is not configured for self-assignable roles!\n"
+                                     "Roleme statistics are not available.")
+                await ctx.send(embed=embed)
+                return
+
+            roles = [ctx.guild.get_role(r) for r in opt.selfroles[ctx.guild.id]]
+
+            for role in roles:
+                if role:
+                    role_stats[role] = len(role.members)
+
+            embed = discord.Embed(title="Roleme Statistics", colour=0x005682)
+            embed.description = ""
+            r_stats_sorted = sorted(role_stats.items(), key=lambda x: x[1], reverse=True)
+            desc_n = 65
+            chunk_n = 30
+            for r, c in r_stats_sorted[:desc_n]:
+                embed.description += f"`{c}` {r.mention}\n"
+            # if too long for embed description
+            if len(r_stats_sorted) > desc_n:
+                # chunk and put in fields
+                stats_chunks = [r_stats_sorted[i:i + chunk_n]
+                                for i in range(desc_n, len(r_stats_sorted), chunk_n)]
+                for chunk in stats_chunks:
+                    stats_str = ""
+                    for r, c in chunk:
+                        stats_str += f"`{c}` {r.mention}\n"
+                    embed.add_field(name="...", value=stats_str, inline=False)
+            user_count = len([x for x in ctx.guild.members if not x.bot])
+            bot_count = ctx.guild.member_count - user_count
+            embed.add_field(name="Total Members", value=f"Users: `{user_count}`\nBots: `{bot_count}`", inline=False)
+            await ctx.send(embed=embed)
+
+    @_role_stats.command(name="--all", aliases=["all", "-a", "a"], enabled=opt.enable_role_stats)
+    @commands.guild_only()
+    @commands.has_guild_permissions(administrator=True)
+    async def role_stats_all(self, ctx: commands.Context):
+        """Show statistics for all roles. This command is admin-only."""
+        role_stats: Dict[discord.Role, int] = {}
+
+        roles = ctx.guild.roles
+        for role in roles:
+            if role.name != "@everyone":
+                role_stats[role] = len(role.members)
+
+        embed = discord.Embed(title="Role Statistics", colour=0x005682)
+        embed.description = ""
+        r_stats_sorted = sorted(role_stats.items(), key=lambda x: x[1], reverse=True)
+        desc_n = 65
+        chunk_n = 30
+        for r, c in r_stats_sorted[:desc_n]:
+            embed.description += f"`{c}` {r.mention}\n"
+        # if too long for embed description
+        if len(r_stats_sorted) > desc_n:
+            # chunk and put in fields
+            stats_chunks = [r_stats_sorted[i:i + chunk_n]
+                            for i in range(desc_n, len(r_stats_sorted), chunk_n)]
+            for chunk in stats_chunks:
+                stats_str = ""
+                for r, c in chunk:
+                    stats_str += f"`{c}` {r.mention}\n"
+                embed.add_field(name="...", value=stats_str, inline=False)
+        user_count = len([x for x in ctx.guild.members if not x.bot])
+        bot_count = ctx.guild.member_count - user_count
+        embed.add_field(name="Total Members", value=f"Users: `{user_count}`\nBots: `{bot_count}`", inline=False)
         await ctx.send(embed=embed)
