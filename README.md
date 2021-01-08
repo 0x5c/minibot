@@ -7,6 +7,7 @@ A small bot for basic guild stuff.
 Includes:
 - Autorole
     - Supports [Membership Screening](https://support.discord.com/hc/en-us/articles/1500000466882-Rules-Screening-FAQ)
+        out of the box
 - Selfrole
 - ~~Purge command~~ *Soon™*
 
@@ -39,7 +40,7 @@ Skip the boilerplate, Get straight to coding: [try it for yourself!](https://git
 
 ## License
 
-Copyright (c) 2019-2020 0x5c
+Copyright (c) 2019-2021 0x5c
 
 This project is released under the terms of the MIT license.  
 See `LICENSE` for the full license text.

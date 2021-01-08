@@ -2,7 +2,7 @@
 Minibot, a bot for basic guild stuff
 ---
 
-Copyright 2019-2020 0x5c <dev@0x5c.io>
+Copyright 2019-2021 0x5c <dev@0x5c.io>
 
 Released under the terms of the MIT License.
 See LICENSE for the full text of the license.
