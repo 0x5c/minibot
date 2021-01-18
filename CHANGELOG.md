@@ -7,10 +7,13 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+
+
+## [1.4.0] - 2021-01-18
 ### Added
 - Ability to exclude bots from autorole (on by default).
 - `mb?rolestats` command.
-- Support for membership screening to autorole.
+- Support for membership screening in autorole.
 ### Changed
 - Bumped version of discord.py dependency to 1.6.0
 
@@ -57,7 +60,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Autorole system
 
 
-[Unreleased]: https://github.com/0x5c/minibot/compare/v1.3.2...HEAD
+[Unreleased]: https://github.com/0x5c/minibot/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/0x5c/minibot/releases/tag/v1.4.0
 [1.3.2]: https://github.com/0x5c/minibot/releases/tag/v1.3.2
 [1.3.1]: https://github.com/0x5c/minibot/releases/tag/v1.3.1
 [1.3.0]: https://github.com/0x5c/minibot/releases/tag/v1.3.0
