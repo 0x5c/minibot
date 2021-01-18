@@ -10,6 +10,9 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 ### Added
 - Ability to exclude bots from autorole (on by default).
 - `mb?rolestats` command.
+- Support for membership screening to autorole.
+### Changed
+- Bumped version of discord.py dependency to 1.6.0
 
 
 ## [1.3.2] - 2020-10-06

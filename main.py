@@ -2,7 +2,7 @@
 Minibot, a bot for basic guild stuff
 ---
 
-Copyright 2019-2020 0x5c <dev@0x5c.io>
+Copyright 2019-2021 0x5c <dev@0x5c.io>
 
 Released under the terms of the MIT License.
 See LICENSE for the full text of the license.
@@ -32,13 +32,15 @@ intents.guilds = True
 intents.members = True
 intents.messages = True
 intents.dm_messages = True
+intents.presences = True
 
-# Only cache members if needed by a bot feature
-member_cache_flags = discord.MemberCacheFlags.from_intents(intents) if opt.enable_role_stats \
-    else discord.MemberCacheFlags.none()
+# Setting up the member cache
+member_cache_flags = discord.MemberCacheFlags.none()
+member_cache_flags.joined = True
+member_cache_flags.online = True
 
 bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=member_cache_flags,
-                   chunk_guilds_at_startup=opt.enable_role_stats)
+                   chunk_guilds_at_startup=True)
 
 
 # --- Commands ---
@@ -110,6 +112,17 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member: discord.Member):
+    if not member.pending:
+        await do_autoroles(member)
+
+
+@bot.event
+async def on_member_update(before: discord.Member, after: discord.Member):
+    if before.pending and not after.pending:
+        await do_autoroles(after)
+
+
+async def do_autoroles(member: discord.Member):
     if opt.no_autorole_bots and member.bot:
         print(f"[II] Not applying autoroles to bot {member}.")
         return
