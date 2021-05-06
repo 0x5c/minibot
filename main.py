@@ -40,7 +40,7 @@ member_cache_flags.joined = True
 member_cache_flags.online = True
 
 bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=member_cache_flags,
-                   chunk_guilds_at_startup=True)
+                   chunk_guilds_at_startup=True, case_insensitive=True)
 
 
 # --- Commands ---
