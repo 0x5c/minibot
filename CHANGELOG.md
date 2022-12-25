@@ -7,6 +7,11 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+## Added
+- Config option to automatically strip spaces after the prefix. Update your configs.
+- First support for discord.py logging output.
+## Changed
+- Migrated to Pycord.
 
 
 ## [1.4.0] - 2021-01-18
