@@ -8,6 +8,7 @@ Released under the terms of the MIT License.
 See LICENSE for the full text of the license.
 """
 
+import logging
 
 import discord
 from discord.ext import commands, tasks
@@ -19,6 +20,8 @@ import info
 import data.keys as keys
 import data.options as opt
 
+
+logging.basicConfig(level=logging.WARNING)
 
 # --- Vars ---
 
@@ -33,14 +36,14 @@ intents.members = True
 intents.messages = True
 intents.dm_messages = True
 intents.presences = True
+intents.message_content = True
 
 # Setting up the member cache
 member_cache_flags = discord.MemberCacheFlags.none()
 member_cache_flags.joined = True
-member_cache_flags.online = True
 
 bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=member_cache_flags,
-                   chunk_guilds_at_startup=True, case_insensitive=True)
+                   chunk_guilds_at_startup=True, case_insensitive=True, strip_after_prefix=opt.strip_after_prefix)
 
 
 # --- Commands ---
