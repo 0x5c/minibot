@@ -12,6 +12,7 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - First support for discord.py logging output.
 ## Changed
 - Migrated to Pycord.
+- Commands are now case-insensitive.
 
 
 ## [1.4.0] - 2021-01-18
