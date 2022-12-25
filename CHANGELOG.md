@@ -10,10 +10,10 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [1.5.0] - 2022-12-25
-## Added
+### Added
 - Config option to automatically strip spaces after the prefix. Update your configs.
 - First support for Pycord logging output.
-## Changed
+### Changed
 - Migrated to Pycord.
 - Commands are now case-insensitive.
 
