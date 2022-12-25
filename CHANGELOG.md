@@ -7,6 +7,9 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+
+
+## [1.5.0] - 2022-12-25
 ## Added
 - Config option to automatically strip spaces after the prefix. Update your configs.
 - First support for discord.py logging output.
@@ -66,7 +69,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 - Autorole system
 
 
-[Unreleased]: https://github.com/0x5c/minibot/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/0x5c/minibot/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/0x5c/minibot/releases/tag/v1.5.0
 [1.4.0]: https://github.com/0x5c/minibot/releases/tag/v1.4.0
 [1.3.2]: https://github.com/0x5c/minibot/releases/tag/v1.3.2
 [1.3.1]: https://github.com/0x5c/minibot/releases/tag/v1.3.1
