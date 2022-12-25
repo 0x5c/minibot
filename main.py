@@ -43,7 +43,7 @@ member_cache_flags = discord.MemberCacheFlags.none()
 member_cache_flags.joined = True
 
 bot = commands.Bot(command_prefix=opt.command_prefix, intents=intents, member_cache_flags=member_cache_flags,
-                   chunk_guilds_at_startup=True, case_insensitive=True, strip_after_prefix=True)
+                   chunk_guilds_at_startup=True, case_insensitive=True, strip_after_prefix=opt.strip_after_prefix)
 
 
 # --- Commands ---
