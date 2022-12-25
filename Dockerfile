@@ -1,40 +1,32 @@
-# A minimal Dockerfile for painless discord bots.
-# v1.0.0
-# Copyright (c) 2019 classabbyamp, 0x5c
-# Released under the terms of the MIT license.
-# Part of:
-# https://github.com/0x5c/quick-bot-no-pain
-
-
-FROM alpine:3.10
+FROM ghcr.io/void-linux/void-linux:latest-full-x86_64
+LABEL org.opencontainers.image.source https://github.com/0x5c/minibot
 
 COPY . /app
 WORKDIR /app
 
-ENV PYTHON_BIN python3
+ARG REPOSITORY=https://repo-ci.voidlinux.org/current
+ARG PKGS=""
+ARG UID 1000
+ARG GID 1000
 
 RUN \
-    echo "**** install build packages ****" && \
-    apk add --no-cache --virtual=build-dependencies \
-        g++ \
-        git \
-        gcc \
-        libressl-dev \
-        python3-dev && \
-    echo "**** install runtime packages ****" && \
-    apk add --no-cache \
-        libressl \
-        py3-pip \
-        python3 && \
+    echo "**** update system ****" && \
+    xbps-install -Suy xbps -R ${REPOSITORY} && \
+    xbps-install -uy -R ${REPOSITORY} && \
+    echo "**** install system packages ****" && \
+    xbps-install -y -R ${REPOSITORY} ${PKGS} python3 python3-pip && \
     echo "**** install pip packages ****" && \
     pip3 install -U pip setuptools wheel && \
     pip3 install -r requirements.txt && \
     echo "**** clean up ****" && \
-    apk del --purge \
-        build-dependencies && \
     rm -rf \
         /root/.cache \
         /tmp/* \
-        /var/cache/apk/*
+        /var/cache/xbps/*
+
+ENV PYTHON_BIN python3
+ENV PYTHONUNBUFFERED 1
+
+USER $UID:$GID
 
 CMD ["/bin/sh", "run.sh", "--pass-errors", "--no-botenv"]
