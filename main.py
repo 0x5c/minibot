@@ -65,7 +65,7 @@ async def _info(ctx: commands.Context):
         channel_perms = ctx.channel.permissions_for(ctx.guild.me)
         botinfo = ("```\n"
                    f"Version: {info.release}\n"
-                   f"discord.py version: {discord.__version__}\n"
+                   f"Pycord version: {discord.__version__}\n"
                    f"Instance ID: {bot.user.id}\n"
                    "---\n"
                    f"Server ID: {ctx.guild.id}\n"
