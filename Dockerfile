@@ -1,10 +1,10 @@
-FROM ghcr.io/void-linux/void-linux:latest-full-x86_64
+FROM ghcr.io/void-linux/void-glibc-full:latest
 LABEL org.opencontainers.image.source https://github.com/0x5c/minibot
 
 COPY . /app
 WORKDIR /app
 
-ARG REPOSITORY=https://repo-ci.voidlinux.org/current
+ARG REPOSITORY=https://repo-fastly.voidlinux.org/current
 ARG PKGS=""
 ARG UID 1000
 ARG GID 1000
