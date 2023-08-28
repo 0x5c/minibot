@@ -7,6 +7,8 @@ and this project adheres (somewhat) to [Semantic Versioning](https://semver.org/
 
 
 ## [Unreleased]
+### Changed
+- Updated Pycord to temporary Git URL to support new "pomelo" Discord usernames.
 
 
 ## [1.5.0] - 2022-12-25
