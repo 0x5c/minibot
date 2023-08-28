@@ -36,7 +36,7 @@ done
 
 # If $PYTHON_BIN is not defined, default to 'python3.7'
 if [ $_NO_BOTENV -eq 1 -a -z "$PYTHON_BIN" ]; then
-    PYTHON_BIN='python3.7'
+    PYTHON_BIN='python3.11'
 fi
 
 
@@ -69,9 +69,9 @@ echo "$0: Starting bot..."
 # The loop
 while true; do
     if [ $_NO_BOTENV -eq 1 ]; then
-        "$PYTHON_BIN" main.py $@
+        "$PYTHON_BIN" main.py "$@"
     else
-        ./$BOTENV/bin/python3 main.py $@
+        ./$BOTENV/bin/python3 main.py "$@"
     fi
     err=$?
     _message="$0: The bot exited with [$err]"
